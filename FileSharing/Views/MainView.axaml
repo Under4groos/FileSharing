@@ -4,13 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:FileSharing.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="FileSharing.Views.MainView"
+             x:Class="FileSharing.Views.MainView" Background="#242424"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+	<Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
+	 
+	 
+	<Grid ColumnDefinitions="130, 4, *">
+		 
+		<Grid  Column="0" Background="#1e1e1e"  >
+			<StackPanel Margin="4"  >
+				 
+				<Button Classes="h1" HorizontalAlignment="Stretch">Home</Button>
+				<Button Classes="h1" HorizontalAlignment="Stretch">Setting</Button>
+			 
+			</StackPanel>
+			<Border Opacity="0.2"  HorizontalAlignment="Right" Width="1" Background="#ced0d6"></Border>
+		</Grid>
+		<GridSplitter Grid.Column="1" Background="{ StaticResource GridSplittercolor }" ResizeDirection="Columns"/>
+		 
+		
+		 
+	</Grid>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </UserControl>

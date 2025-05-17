@@ -7,6 +7,8 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FileSharing.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="FileSharing">
+        Title="FileSharing"
+        Background="#202020"
+        >
         <views:MainView />
 </Window>
