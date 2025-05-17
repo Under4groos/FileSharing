@@ -3,29 +3,69 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:FileSharing.ViewModels"
+             xmlns:controls="clr-namespace:FileSharing.Views.Controls"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             
              x:Class="FileSharing.Views.MainView" Background="#242424"
              x:DataType="vm:MainViewModel">
 	<Design.DataContext>
 		<vm:MainViewModel />
 	</Design.DataContext>
 	 
-	 
-	<Grid ColumnDefinitions="130, 4, *">
-		 
-		<Grid  Column="0" Background="#1e1e1e"  >
-			<StackPanel Margin="4"  >
-				 
-				<Button Classes="h1" HorizontalAlignment="Stretch">Home</Button>
-				<Button Classes="h1" HorizontalAlignment="Stretch">Setting</Button>
+	 <Grid RowDefinitions="25,*" Margin="0,10,0,10">
+		 <StackPanel Grid.Row="0"     >
+			 <TextBlock  TextWrapping="WrapWithOverflow" Text="{Binding SelectedChat , StringFormat='Select: {0}'}"></TextBlock>
+		 </StackPanel>	 
+		 <ScrollViewer Grid.Row="1" Margin="0,40,0,0">
 			 
-			</StackPanel>
-			<Border Opacity="0.2"  HorizontalAlignment="Right" Width="1" Background="#ced0d6"></Border>
-		</Grid>
-		<GridSplitter Grid.Column="1" Background="{ StaticResource GridSplittercolor }" ResizeDirection="Columns"/>
-		 
+			 <StackPanel>
+ 
+				 <ItemsControl   ItemsSource="{Binding  Chats}">
+					 <ItemsControl.ItemsPanel>
+						 <ItemsPanelTemplate>
+							 <StackPanel>
+								 <VirtualizingStackPanel HorizontalAlignment="Stretch" Orientation="Vertical"/>
+							 </StackPanel>
+						 </ItemsPanelTemplate>
+					 </ItemsControl.ItemsPanel>
+					 <ItemsControl.ItemTemplate>
+						 <DataTemplate>
+							 <Button HorizontalAlignment="Stretch" Click="Button_Click" CommandParameter="{Binding}">
+								 <Button.Template>
+									 <ControlTemplate  TargetType="Button">
+										 <Border Background="{TemplateBinding Background}" 
+										         BorderBrush="{TemplateBinding BorderBrush}" 
+										         BorderThickness="{TemplateBinding BorderThickness}" 
+										         CornerRadius="5">
+											 <Grid Margin="4">
+												 <ContentPresenter HorizontalAlignment="Stretch" 
+												                   VerticalAlignment="Center" 
+												                   Margin="{TemplateBinding Padding}"/>
+												 <StackPanel Orientation="Horizontal">
+													 <Border CornerRadius="4" BorderThickness="1" BorderBrush="#454545">
+														 <Image Height="45" Width="45" asyncImageLoader:ImageLoader.Source="{Binding Src}"></Image>
+													 </Border>
+													 <StackPanel Margin="5">
+														 <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Text="{Binding Path=Name}"></TextBlock>
+														 <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Text="{Binding Path=Count, StringFormat='Messages: {0}'}"></TextBlock>
+													 </StackPanel>
+												 </StackPanel>
+											 </Grid>
+										 </Border>
+									 </ControlTemplate>
+								 </Button.Template>
+					 
+							 </Button>
+						 </DataTemplate>
+					 </ItemsControl.ItemTemplate>
+				 </ItemsControl>
+				
+			 </StackPanel>
+		 </ScrollViewer>
 		
-		 
-	</Grid>
+		
+	 </Grid>
+	 
 
 </UserControl>

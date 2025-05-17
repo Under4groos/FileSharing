@@ -34,3 +34,10 @@
     </ResourceDictionary>
 </Application.Resources>
 ```
+
+```
+https://docs.avaloniaui.net/docs/basics/user-interface/controls/creating-controls/defining-properties
+https://docs.avaloniaui.net/docs/guides/styles-and-resources/resources
+https://docs.avaloniaui.net/docs/reference/controls/gridsplitter
+https://docs.avaloniaui.net/docs/basics/user-interface/controls/
+```

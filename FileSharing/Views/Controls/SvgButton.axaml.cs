@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 
 namespace FileSharing.Views.Controls;
 
-public partial class SvgButton : UserControl
+public partial class SvgButton : Button
 {
     public SvgButton()
     {
